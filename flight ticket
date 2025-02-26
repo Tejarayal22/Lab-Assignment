@@ -1,0 +1,54 @@
+#include <iostream>
+#include <string>
+using namespace std;
+class FlightTicket {
+private:
+    string passengerName;
+    int flightNumber;
+    int seatNumber;
+    bool isBooked;
+
+public:
+    FlightTicket(string name, int flight, int seat) {
+        passengerName = name;
+        flightNumber = flight;
+        seatNumber = seat;
+        isBooked = false;
+    }
+
+    void bookTicket() {
+        if (!isBooked) {
+            isBooked = true;
+            cout << "Ticket booked successfully for " << passengerName << endl;
+        } else {
+            cout << "Seat already booked!" << endl;
+        }
+    }
+
+    void cancelTicket() {
+        if (isBooked) {
+            isBooked = false;
+            cout << "Ticket canceled for " << passengerName << endl;
+        } else {
+            cout << "No booking found to cancel!" << endl;
+        }
+    }
+    void displayTicket() {
+        cout << "Passenger: " << passengerName << endl;
+        cout << "Flight Number: " << flightNumber << endl;
+        cout << "Seat Number: " << seatNumber << endl;
+        cout << "Status: " << (isBooked ? "Booked" : "Available") << endl;
+    }
+};
+
+int main() {
+    FlightTicket ticket1("John Doe", 101, 25);
+    
+    ticket1.displayTicket();
+    ticket1.bookTicket();
+    ticket1.displayTicket();
+    ticket1.cancelTicket();
+    ticket1.displayTicket();
+
+    return 0;
+}
